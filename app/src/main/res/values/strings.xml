@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Story App</string>
+    <string name="signup">Daftar</string>
+    <string name="login">Masuk</string>
+    <string name="desc_welcome_page">Aplikasi ini memungkinkan Anda berbagi cerita dan pengalaman dengan orang lain. Mulai sekarang dan jelajahi fitur menarik kami!</string>
+    <string name="title_welcome_page">Selamat datang di Story App!</string>
+    <string name="title_signup_page">Lengkapi data dirimu di bawah ini ya</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message_login_page">Masukkan dulu datamu ya</string>
+    <string name="title_login_page">Sudah siap untuk upgrade skill?</string>
+    <string name="name">Nama</string>
+    <string name="greeting">Halo %1$s,</string>
+    <string name="logout">Keluar</string>
+    <string name="image_story">Image Story</string>
+    <string name="detail_image">Detail Image</string>
+    <string name="add_story">Add Story</string>
+    <string name="preview_photo">Preview Photo</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="upload">Upload</string>
+    <string name="description">description</string>
+    <string name="image_signup">Image SignUp</string>
+    <string name="image_welcome">Image Welcome</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="map">Map</string>
+    <string name="retry">Coba Lagi</string>
+    <string name="add_location">Add Location</string>
+    <string name="start_point">Start Point</string>
+    <string name="start_running">Start Running</string>
+    <string name="stop_running">Stop Running</string>
+</resources>
