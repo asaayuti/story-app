@@ -1,7 +1,11 @@
 package com.example.storyapp.view.login
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -37,12 +41,22 @@ class LoginActivity : AppCompatActivity() {
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
         }.start()
-
     }
 
     private fun setupAction() {
         showLoading(false)
         binding.loginButton.setOnClickListener {
+            // Check network connectivity before attempting login.
+            if (!isNetworkAvailable()) {
+                AlertDialog.Builder(this).apply {
+                    setMessage("Network offline. Please check your internet connection.")
+                    setNegativeButton("OK") { dialog, _ -> dialog.dismiss() }
+                    create()
+                    show()
+                }
+                return@setOnClickListener
+            }
+
             val email = binding.edLoginEmail.text.toString()
             val password = binding.edLoginPassword.text.toString()
             viewModel.login(email, password).observe(this) { result ->
@@ -70,7 +84,6 @@ class LoginActivity : AppCompatActivity() {
                             }
                             showLoading(false)
                         }
-
                         is Result.Error -> {
                             AlertDialog.Builder(this).apply {
                                 setMessage("Password atau Email salah")
@@ -88,10 +101,28 @@ class LoginActivity : AppCompatActivity() {
         binding.tvRegister.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
         }
-
     }
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    // Helper function to check network availability
+    @SuppressLint("ObsoleteSdkInt")
+    private fun isNetworkAvailable(): Boolean {
+        val connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val network = connectivityManager.activeNetwork ?: return false
+            val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)
+        } else {
+            @Suppress("DEPRECATION")
+            val activeNetworkInfo = connectivityManager.activeNetworkInfo
+            @Suppress("DEPRECATION")
+            activeNetworkInfo != null && activeNetworkInfo.isConnected
+        }
     }
 }
