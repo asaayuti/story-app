@@ -13,8 +13,7 @@
         <ImageView
             android:id="@+id/iv_detail_photo"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:scaleType="centerCrop"
+            android:layout_height="wrap_content"
             android:transitionName="photo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
