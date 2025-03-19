@@ -7,8 +7,8 @@
     <string name="title_signup_page">Lengkapi data dirimu di bawah ini ya</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="message_login_page">Masukkan dulu datamu ya</string>
-    <string name="title_login_page">Sudah siap untuk upgrade skill?</string>
+    <string name="title_login_page">Login</string>
+    <string name="message_login_page">Bagikan ceritamu dan temukan kisah dari orang lain</string>
     <string name="name">Nama</string>
     <string name="greeting">Halo %1$s,</string>
     <string name="logout">Keluar</string>
@@ -29,4 +29,8 @@
     <string name="start_point">Start Point</string>
     <string name="start_running">Start Running</string>
     <string name="stop_running">Stop Running</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="daftar">Daftar</string>
+    <string name="masuk">Masuk</string>
+    <string name="sudah_punya_akun">Sudah punya akun?</string>
 </resources>

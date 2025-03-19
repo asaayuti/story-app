@@ -1,5 +1,6 @@
 package com.example.storyapp.view.login
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.storyapp.data.api.response.LoginResult
 import com.example.storyapp.databinding.ActivityLoginBinding
 import com.example.storyapp.utils.ViewModelFactory
 import com.example.storyapp.view.main.MainActivity
+import com.example.storyapp.view.signup.SignupActivity
 
 class LoginActivity : AppCompatActivity() {
     private val viewModel by viewModels<LoginViewModel> {
@@ -26,6 +28,16 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         setupAction()
+        playAnimation()
+    }
+
+    private fun playAnimation() {
+        ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_X, -30f, 30f).apply {
+            duration = 6000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }.start()
+
     }
 
     private fun setupAction() {
@@ -73,6 +85,12 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+
+        binding.tvRegister.setOnClickListener {
+            startActivity(Intent(this, SignupActivity::class.java))
+            finish()
+        }
+
     }
 
     private fun showLoading(isLoading: Boolean) {

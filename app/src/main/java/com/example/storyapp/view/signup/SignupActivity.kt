@@ -2,6 +2,7 @@ package com.example.storyapp.view.signup
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.storyapp.data.Result
 import com.example.storyapp.databinding.ActivitySignupBinding
 import com.example.storyapp.utils.ViewModelFactory
+import com.example.storyapp.view.login.LoginActivity
 
 class SignupActivity : AppCompatActivity() {
     private val viewModel by viewModels<SignUpViewModel> {
@@ -88,9 +90,12 @@ class SignupActivity : AppCompatActivity() {
                     }
                 }
             }
-
-
         }
+        binding.tvLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+
     }
 
     private fun showLoading(isLoading: Boolean) {
