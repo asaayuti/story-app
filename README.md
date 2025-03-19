@@ -1,34 +1,47 @@
-# Story App
+# Story App MVVM
 
 ### Overview
 Story App is an application that displays a list of stories from users, where each story item includes an image,
 the name of the user who posted it, and a description. Users can add new stories along with location data.
 The maps page shows a map with markers indicating the locations of the story posts.
 
-
-### Preview
+### Preview  
 <table align="start">
   <tr>
     <td align="center">
-      <img src="preview/login.jpg" alt="Login" width="200" height="400"/><br/>
+      <img src="preview/welcome.png" alt="Welcome" width="200" height="400"/><br/>
+      <b>Welcome</b>
+    </td>
+    <td align="center">
+      <img src="preview/login.png" alt="Login" width="200" height="400"/><br/>
       <b>Login</b>
     </td>
     <td align="center">
-      <img src="preview/story_list.jpg" alt="Story List" width="200" height="400"/><br/>
-      <b>Story List</b>
+      <img src="preview/register.png" alt="Register" width="200" height="400"/><br/>
+      <b>Register</b>
     </td>
     <td align="center">
-      <img src="preview/add_story.jpg" alt="Add Story" width="200" height="400"/><br/>
+      <img src="preview/home.png" alt="Home" width="200" height="400"/><br/>
+      <b>Home</b>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="preview/detail.png" alt="Detail" width="200" height="400"/><br/>
+      <b>Detail</b>
+    </td>
+    <td align="center">
+      <img src="preview/add_story.png" alt="Add Story" width="200" height="400"/><br/>
       <b>Add Story</b>
     </td>
     <td align="center">
-      <img src="preview/maps.jpg" alt="Maps" width="200" height="400"/><br/>
+      <img src="preview/maps.png" alt="Maps" width="200" height="400"/><br/>
       <b>Maps</b>
     </td>
   </tr>
 </table>
 
-## 🛠 Tech Stack
+## Tech Stack
 - **Kotlin** – Primary language for Android development.
 - **MVVM Architecture** – Using ViewModel, LiveData, and Repository pattern.
 - **Hilt** – For dependency injection.
