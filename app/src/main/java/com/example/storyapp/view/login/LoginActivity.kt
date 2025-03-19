@@ -41,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
+        showLoading(false)
         binding.loginButton.setOnClickListener {
             val email = binding.edLoginEmail.text.toString()
             val password = binding.edLoginPassword.text.toString()
@@ -59,12 +60,10 @@ class LoginActivity : AppCompatActivity() {
                             AlertDialog.Builder(this).apply {
                                 setMessage("Login berhasil")
                                 setPositiveButton("Lanjut") { _, _ ->
-                                    startActivity(
-                                        Intent(
-                                            this@LoginActivity,
-                                            MainActivity::class.java
-                                        )
-                                    )
+                                    val intent = Intent(this@LoginActivity, MainActivity::class.java).apply {
+                                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                    }
+                                    startActivity(intent)
                                 }
                                 create()
                                 show()
@@ -88,7 +87,6 @@ class LoginActivity : AppCompatActivity() {
 
         binding.tvRegister.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
-            finish()
         }
 
     }

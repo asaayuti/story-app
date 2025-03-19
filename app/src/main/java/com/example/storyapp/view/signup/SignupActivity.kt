@@ -58,6 +58,7 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
+        showLoading(false)
         binding.signupButton.setOnClickListener {
             val name = binding.edRegisterName.text.toString()
             val email = binding.edRegisterEmail.text.toString()
@@ -68,7 +69,7 @@ class SignupActivity : AppCompatActivity() {
                         Result.Loading -> showLoading(true)
                         is Result.Success -> {
                             AlertDialog.Builder(this).apply {
-                                setMessage(result.data.message)
+                                setMessage("Register berhasil!")
                                 setPositiveButton("Lanjut") { _, _ ->
                                     finish()
                                 }
@@ -79,13 +80,17 @@ class SignupActivity : AppCompatActivity() {
                         }
 
                         is Result.Error -> {
-                            AlertDialog.Builder(this).apply {
-                                setMessage(result.error)
-                                setNegativeButton("Coba Lagi") { dialog, _ -> dialog.dismiss() }
-                                create()
-                                show()
+                            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                                AlertDialog.Builder(this).apply {
+                                    setMessage("Semua data harus diisi!")
+                                    setPositiveButton("OK") { dialog, _ ->
+                                        dialog.dismiss()
+                                    }
+                                    create()
+                                    show()
+                                }
+                                showLoading(false)
                             }
-                            showLoading(false)
                         }
                     }
                 }
@@ -93,7 +98,6 @@ class SignupActivity : AppCompatActivity() {
         }
         binding.tvLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
-            finish()
         }
 
     }
